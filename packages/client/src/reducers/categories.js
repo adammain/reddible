@@ -1,5 +1,5 @@
 import { 
-    LOAD_CATEGORIES, 
+    GET_CATEGORIES, 
     SELECT_CATEGORY 
   } from '../actions/constTypes';
   
@@ -7,7 +7,7 @@ import {
     const { categories, selectedCategory } = action
     switch (action.type) {
       
-      case LOAD_CATEGORIES:
+      case GET_CATEGORIES:
         return {
           ...state,
           categories

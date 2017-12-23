@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from './components/Header';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Header />
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={Header} />
+          <Route path="/:category?" component={Header} />
+        </Switch>
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App)

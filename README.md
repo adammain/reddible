@@ -14,11 +14,11 @@ Installs Lerna.
 
 ### `yarn run bootstrap`
 
-Bootstraps both projects (install the dependencies).
+Installs both projects depencies (client and server).
 
 ### `yarn run start`
 
-Starts both projects.
+Starts both development server and client app.
 
 [Lerna]: https://github.com/lerna/lerna
 

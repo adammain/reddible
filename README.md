@@ -28,5 +28,5 @@ Information about the API server and how to use it can be found in its [README f
 
 ## Client App
 
-Information about the available Client App configuration and build commands can be found in its [README file](packages/client/README.md).
+Available Client App configuration and build commands can be found in its [README file](packages/client/README.md).
 

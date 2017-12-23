@@ -7,7 +7,7 @@ class Navbar extends Component {
   render () {
     const { categories, routeCategory } = this.props
     return (
-        <nav className="flex-column flex-md-row bd-navbar navbar navbar-expand navbar-light">
+        <nav>
             <Link to='/' alt='Reddible'>Reddible</Link>
             <div>
                 <ul>

@@ -29,8 +29,95 @@ export const fetchPosts = (filter) => {
     .then(data => data)
 }
 
-// Comments
-export const fetchPostComments = id => 
-  fetch(`${apiUrl}/posts/${id}/comments`, { headers })
+// Post
+export const fetchPost = id => 
+  fetch(`${baseUrl}/posts/${id}`, { headers })
     .then(res => res.json())
     .then(data => data);
+
+export const addPost = post => {
+  const postData = {
+    ...post,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${baseUrl}/posts`, {
+    method: "POST", 
+    body: JSON.stringify(postData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const updatePost = post => {
+  const postData = {
+    ...post,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${baseUrl}/posts/${post.id}`, {
+    method: "PUT", 
+    body: JSON.stringify(postData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const removePost = id => 
+  fetch(`${baseUrl}/posts/${id}`, { 
+    method: 'DELETE',
+    headers 
+  });
+
+// Comments
+export const fetchPostComments = id => 
+  fetch(`${baseUrl}/posts/${id}/comments`, { headers })
+    .then(res => res.json())
+    .then(data => data);
+
+export const addNewComment = comment => {
+  const commentData = {
+    ...comment,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${baseUrl}/comments`, {
+    method: "POST", 
+    body: JSON.stringify(commentData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+export const removeComment = id => 
+  fetch(`${baseUrl}/comments/${id}`, { 
+    method: 'DELETE',
+    headers 
+  });
+
+export const updateComment = comment => {
+  const commentData = {
+    ...comment,
+    timestamp: new Date().getTime()
+  };
+
+  return fetch(`${baseUrl}/comments/${comment.id}`, {
+    method: "PUT", 
+    body: JSON.stringify(commentData),
+    headers
+  }).then(res => res.json())
+    .then(data => data);
+}
+
+
+export const vote = (id, option, type) => {
+  const postData = { id: id, option: option };
+  const url = `${baseUrl}/${type}/${id}`;
+  return fetch(url, { 
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers 
+    })
+    .then(res => res.json())
+    .then(data => data);
+}

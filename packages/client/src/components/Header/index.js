@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './Header.css';
+import Navbar from '../Navbar'
 import { fetchCategories, selectCategory } from '../../actions/categories';
 
 class Header extends Component {
@@ -13,35 +15,12 @@ class Header extends Component {
     const { categories } = this.props.categories;
     const routeCategory = this.props.match.params.category;
     return (
-      <nav>
-        <Link 
-          to='/'
-          alt='Readable'
-        >Readable</Link>
-        <div>
-          <ul>
-            { categories !== undefined && categories.map( category => (
-              <li key={category.path} className={ 
-                "nav-item" + (routeCategory === category.name ? " active" : "")
-              }>
-                <Link
-                  to={`/${category.path}`}
-                >{category.name}</Link>
-              </li>
-            ))}
-            <li>
-              <Link
-                to='/new'
-              >new post</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar categories={categories} routeCategory={routeCategory} />
     );
   }
 }
 
-const mapStateToProps  = ({ categories, selectedCategory }) => ({
+const mapStateToProps = ({ categories, selectedCategory }) => ({
   categories,
   selectedCategory
 })

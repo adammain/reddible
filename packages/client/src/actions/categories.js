@@ -1,12 +1,26 @@
 import * as api from '../utils/api'
 
 import { 
-  LOAD_CATEGORIES, 
+  GET_CATEGORIES, 
   SELECT_CATEGORY 
 } from './constTypes'
 
-// Fetch categories from API
+// Async fetch handler -> call Load when result returned
 export const fetchCategories = () => dispatch => (
   api.fetchCategories()
-      .then(categories => dispatch(loadCategories(categories)))
+      .then(categories => dispatch(getCategories(categories)))
 )
+
+// GET all categories
+export const getCategories = categories => ({
+    type: GET_CATEGORIES,
+    categories
+});
+
+// Select category
+export const selectCategory = (selectedCategory) => {
+    return {
+        type: SELECT_CATEGORY,
+        selectedCategory
+    }
+}

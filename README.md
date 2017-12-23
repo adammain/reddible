@@ -2,7 +2,7 @@
 
 TODO: Add project description, screenshot or gif, and link to online demo.
 
-_This projects uses [Lerna] to work as a simple monorepo._
+_This projects uses [Lerna] to package the client and development server into a single package._
 
 ## Start Developing
 

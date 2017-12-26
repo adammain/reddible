@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import PostThreadSort from './PostThreadSort'
-import Post from './Post'
+import Post from './components/Post'
 import { selectCategory } from '../../actions/categories'
 import { fetchPosts } from '../../actions/posts'
 

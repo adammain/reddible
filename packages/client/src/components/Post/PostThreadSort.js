@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 // import { faLongArrowAltDown, faLongArrowAltUp } from '@fortawesome/fontawesome-free-solid'
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+// import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
-import * as sortActions from '../../actions/sort';
+import * as sortActions from '../../actions/sort'
 
 const SortButtonPropTypes = {
   orderby: PropTypes.string,
   criteria: PropTypes.string,
   sort: PropTypes.oneOf(['asc', 'desc']),
   onClickHandler: PropTypes.func
-};
+}
 
 class SortButton extends Component {
   render () {
-    const { orderby, sort, criteria, onClickHandler } = this.props;
+    const { orderby, sort, criteria, onClickHandler } = this.props
 
     return (
       <button type="button" 
@@ -27,24 +27,24 @@ class SortButton extends Component {
         )} */}
         {criteria}
       </button>
-    );
+    )
   }
 }
 
-SortButton.propTypes = SortButtonPropTypes;
+SortButton.propTypes = SortButtonPropTypes
 
 class PostThreadSort extends Component {
 
   componentDidMount() { 
-    this.props.setSort('date', 'asc');
+    this.props.setSort('date', 'asc')
   }
 
   handleSortClick = (criteria, sort) => {
-    this.props.setSort(criteria, sort === 'asc' ? 'desc' : 'asc');
+    this.props.setSort(criteria, sort === 'asc' ? 'desc' : 'asc')
   }
 
   render () {
-    const { sort } = this.props;
+    const { sort } = this.props
 
     return (
       <div>
@@ -66,7 +66,7 @@ class PostThreadSort extends Component {
           </div>
         )}
       </div>
-    );
+    )
   }
 }
 
@@ -74,4 +74,4 @@ const mapStateToProps  = ({ sort }) => ({
   sort
 })
 
-export default connect(mapStateToProps, sortActions)(PostThreadSort);
+export default connect(mapStateToProps, sortActions)(PostThreadSort)

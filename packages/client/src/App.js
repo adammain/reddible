@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 
-import Header from './components/Header/Header'
-import PostThread from './components/Post/PostThread'
-import PostAdd from './components/Post/PostAdd'
+import Header from './components/header/Header'
+import PostThread from './components/post/PostThread'
+import PostAdd from './components/post/PostAdd'
 
 class App extends Component {
   render() {

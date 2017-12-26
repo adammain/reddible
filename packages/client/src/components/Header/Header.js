@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../navbar/Navbar'
 import { fetchCategories, selectCategory } from '../../actions/categories'
 
 class Header extends Component {

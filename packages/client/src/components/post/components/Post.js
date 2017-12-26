@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PostDetail from '../PostDetail'
+import PostEditor from '../PostEditor'
 
 import { fromNow } from '../../../utils/helpers'
 
@@ -20,7 +20,7 @@ class Post extends Component {
 					</footer>
         </div>
         <div className="card-footer">
-          <PostDetail post={post} />
+          <PostEditor post={post} />
         </div>
       </div>
     )

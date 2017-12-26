@@ -1,47 +1,86 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { removePost } from '../../actions/post'
-import VoteHandler from '../common/VoteHandler'
-import CommentCount from './components/CommentCount'
-import EditDeleteControls from '../common/EditDeleteControls'
+import FormSerialize from 'form-serialize'
+import uuid from 'uuid'
+import { fetchPost } from '../../actions/post'
+import { addNewComment } from '../../actions/comments'
+import { fromNow, dateTimeFormat } from '../../utils/helpers'
+import PostEditor from './PostEditor'
+import PostComments from './components/PostComments'
 
-class PostControls extends Component {
+class PostDetail extends Component {
 
-  handleDeletePost = () => {
-    this.props.removePost(this.props.post).then( () => {
-      if( this.props.categories.selectedCategory )
-        this.props.history.push(`/${this.props.categories.selectedCategory}`)
-      else
-        this.props.history.push('/')
-    })    
+  componentDidMount() {
+    const id = this.props.match.params.id || false
+    this.props.fetchPost(id)
   }
 
-  handleEditPost = () => {
-    this.props.history.push(`/edit/${this.props.post.id}`)
+  componentWillReceiveProps(nextProps) {
+    if( nextProps.match.params.id !== this.props.match.params.id ) {
+      const id = this.props.match.params.id || false
+      this.props.fetchPost(id)
+    }
+  }
+
+  handleNewComment = ( event ) => {
+    event.preventDefault()
+
+    const postId = this.props.post.id
+    const serializedComment = FormSerialize(event.target, {hash: true})
+    const commentId = uuid()
+    const comment = {
+      ...serializedComment,
+      id: commentId,
+      parentId: postId
+    }
+    this.props.addNewComment(comment)
   }
 
   render () {
 
-    const { post } = this.props
+    const { post, comments, history } = this.props
+    const postComments = comments[ post.id ] || []
 
     return (
-      <div className="PostControls">
-        <div className="btn-toolbar">
-          <VoteHandler entry={post} />
-          <CommentCount parentId={post.id} />
-          <EditDeleteControls 
-            onDeleteClick={ () => { this.handleDeletePost() } }
-            onEditClick={ () => { this.handleEditPost() } }
-          />
-        </div>
-      </div>
+      <article className="PostDetail container">
+        {post && post.title ? (
+          <div className="card">
+            <div className="card-body">
+              <div className="card-subtitle">
+                <h6 className="mb-0">{post.author}</h6>
+                <time className="text-secondary" dateTime={ dateTimeFormat(post.timestamp)}>{ fromNow(post.timestamp)}</time>
+              </div>
+              <h4 className="card-title">{post.title}</h4>
+              <div className="PostDetail--body">{post.body}</div>
+            </div>
+
+            <div className="card-footer">
+              <PostEditor post={post} history={history} />
+            </div>
+
+            {postComments && (
+              <PostComments 
+                comments={postComments}
+                onNewComment={this.handleNewComment}
+              />
+            )}
+
+          </div>
+        ) : (
+          <div className="PostListView--no-posts card bg-light">
+            <div className="card-body text-center">
+              This post doesn't exist has been removed.
+            </div>
+          </div>
+        )}
+      </article>
     )
   }
 }
 
-const mapStateToProps  = ({ categories }) => ({
-  categories
+const mapStateToProps  = ({ post, comments }) => ({
+  post: post.post ? post.post : post,
+  comments
 })
 
-export default withRouter(connect(mapStateToProps, { removePost })(PostControls))
+export default connect(mapStateToProps, { fetchPost, addNewComment })(PostDetail)

@@ -1,6 +1,7 @@
 # reddible
 
-TODO: Add project description, screenshot or gif, and link to online demo.
+### Screenshot
+![Screenshot of reddible application](/src/img/reddible-screenshot?raw=true "Reddible")
 
 _This projects uses [Lerna] to package the client and development server into a single package._
 

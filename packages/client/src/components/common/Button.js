@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
 
-import Icon from './Icon';
+import Icon from './Icon'
 
 class Button extends PureComponent {
   render() {
@@ -14,7 +14,7 @@ class Button extends PureComponent {
       iconStyle,
       disabled,
       ...props,
-    } = this.props;
+    } = this.props
 
     if (styleType === 'default') {
       return (
@@ -41,7 +41,7 @@ class Button extends PureComponent {
             <div className={`rippleJS ${icon ? 'fill' : ''}`} />
           )}
         </button>
-      );
+      )
     }
 
     return (
@@ -63,7 +63,7 @@ class Button extends PureComponent {
           <div className={`rippleJS ${icon ? 'fill' : ''}`} />
         )}
       </button>
-    );
+    )
   }
 }
 
@@ -101,6 +101,6 @@ const styles = {
   iconFloat: css({
     fontSize: 30,
   }),
-};
+}
 
-export default Button;
+export default Button

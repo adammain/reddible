@@ -15,11 +15,11 @@ class Post extends Component {
           <Link to={`/${post.category}/${post.id}`}>
             <h4>{post.title}</h4>
           </Link>
-          <footer className="blockquote-footer">
+          <footer>
 						By {post.author}, { fromNow(post.timestamp)}
 					</footer>
         </div>
-        <div className="card-footer">
+        <div>
           <PostEditor post={post} />
         </div>
       </div>

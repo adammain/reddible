@@ -9,6 +9,10 @@ import PostEdit from './components/post/PostEdit'
 
 css.global('html, body', {
   margin: 0,
+  padding: 0,
+  backgroundColor: '#eeeeee',
+  height: '100%',
+  width: '100%',
 })
 
 

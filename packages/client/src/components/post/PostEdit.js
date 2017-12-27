@@ -38,15 +38,14 @@ class PostEdit extends Component {
     const { post } = this.props
 
     return (
-      <div className="PostEdit container">
-        <div className="card">
-          { post && post.title && (
+      <div>
+        {post && post.title 
+          && (
             <PostForm 
               formHeaderTitle="Edit Post"
               post={post}
               onFormSubmit={this.handlePostUpdate} />
-          )}
-        </div>
+        )}
       </div>
     )
   }

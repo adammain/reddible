@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
+
 import { fetchPost } from '../../actions/post'
 import { addNewComment } from '../../actions/comments'
 import { fromNow, dateTimeFormat } from '../../utils/helpers'
@@ -39,22 +40,24 @@ class PostDetail extends Component {
   render () {
 
     const { post, comments, history } = this.props
-    const postComments = comments[ post.id ] || []
+    const postComments = comments[post.id] || []
 
-    return (
-      <article className="PostDetail container">
-        {post && post.title ? (
-          <div className="card">
-            <div className="card-body">
-              <div className="card-subtitle">
-                <h6 className="mb-0">{post.author}</h6>
-                <time className="text-secondary" dateTime={ dateTimeFormat(post.timestamp)}>{ fromNow(post.timestamp)}</time>
+    if (post && post.title) {
+      return (
+        <article>
+            <div>
+              <div>
+                <h6>{post.author}</h6>
+                <time dateTime={ dateTimeFormat(post.timestamp)}>
+                  {fromNow(post.timestamp)}
+                </time>
               </div>
-              <h4 className="card-title">{post.title}</h4>
-              <div className="PostDetail--body">{post.body}</div>
+
+              <h4>{post.title}</h4>
+              <div>{post.body}</div>
             </div>
 
-            <div className="card-footer">
+            <div>
               <PostEditor post={post} history={history} />
             </div>
 
@@ -64,17 +67,19 @@ class PostDetail extends Component {
                 onNewComment={this.handleNewComment}
               />
             )}
-
-          </div>
-        ) : (
-          <div className="PostListView--no-posts card bg-light">
-            <div className="card-body text-center">
-              This post doesn't exist has been removed.
+        </article>
+      )
+    } else {
+      return (
+        <article>
+          <div>
+            <div>
+              This post no longer exists.
             </div>
           </div>
-        )}
-      </article>
-    )
+        </article>
+      )
+    }
   }
 }
 

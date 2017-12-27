@@ -25,11 +25,11 @@ class CommentsCountCountrol extends Component {
     const commentCount = this.commentCount( comments[parentId] )
 
     return (
-      <div className="CommentsCountCountrol input-group">
-        <span className="input-group-addon">
+      <div>
+        <span>
           <FaComments />
         </span>
-        <span className="input-group-addon">
+        <span>
           {commentCount}
         </span>
       </div>

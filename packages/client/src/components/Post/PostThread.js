@@ -45,7 +45,7 @@ class PostListView extends Component {
     const sortedPosts = this.sort(posts, sort)
 
     return (
-      <div className="container">
+      <div>
         {sortedPosts 
           && sortedPosts.length 
             ? sortedPosts.map( post => (
@@ -54,11 +54,11 @@ class PostListView extends Component {
                 post={post}
               />
             ))
-            :(<div className="PostListView--no-posts card bg-light">
-              <div className="card-body text-center">
-                No posts in <em>{this.props.match.params.category}</em>
-              </div>
-            </div>)
+            : (<div>
+                <div>
+                  No posts in <em>{this.props.match.params.category}</em>
+                </div>
+              </div>)
         }
       </div>
     )

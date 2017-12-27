@@ -23,43 +23,44 @@ class PostComments extends Component {
     const { comments } = this.props
 
     return (
-      <div className="mt-2">
-        <div className="card-body">
-          <h6 className="card-subtitle text-muted">
+      <div>
+        <div>
+          <h6>
             {comments.length 
               ? `Comments (${comments.length})` 
               : "No comments"}
           </h6>
         </div>
-        <ul className="list-group list-group-flush">
-          { this.sortCommentsByDate(comments).map( comment => (
+        <ul>
+          {this.sortCommentsByDate(comments).map( comment => (
             <CommentItem 
               key={comment.id} 
               comment={comment}
             />
           ))}
-          <li className="list-group-item bg-light">
-            <h6 className="mb-4 mt-2">
-              {comments.length ? "Add your comment:" : "Be the first to comment!"}
-            </h6>
+          <li>
+            <h6>Add Comment</h6>
             <form 
-              className="mb-2" 
-              onSubmit={ this.handleCommentSubmit }
+              onSubmit={this.handleCommentSubmit}
               ref={(commentForm) => this.commentForm = commentForm}
             >
-              <div className="form-group">
-                <input className="form-control" type="text" name="author" placeholder="Your name" required />
+              <div>
+                <input 
+                  type="text" 
+                  name="author" 
+                  placeholder="Your name" 
+                  required 
+                />
               </div>
-              <div className="form-group">
+              <div>
                 <textarea 
-                  className="form-control" 
                   name="body"
                   rows="3"
                   placeholder="Your comment"
                   required
                 ></textarea>
               </div>
-              <button className="card-link btn btn-primary">Add Comment</button>
+              <button>Add Comment</button>
             </form>
           </li>
         </ul>

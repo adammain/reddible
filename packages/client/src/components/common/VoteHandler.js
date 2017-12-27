@@ -22,14 +22,14 @@ class VoteHandler extends Component {
 
     return (
       <div>
-        <button className="btn" 
-          onClick={ () => { this.vote(entry, 'downVote') } }
+        <button
+          onClick={() => {this.vote(entry, 'downVote')}}
         >
           <FaChevronDown flip="horizontal" />
         </button>
-        <span className="input-group-addon">{score}</span>
-        <button className="btn"
-        onClick={ () => { this.vote(entry, 'upVote') } }
+        <span>{score}</span>
+        <button
+          onClick={() => {this.vote(entry, 'upVote')}}
         >
           <FaChevronUp />
         </button>

@@ -98,14 +98,19 @@ class PostForm extends Component {
             <label>Select Category</label>
             <div>
               <div data-toggle="buttons">
-                { categories !== undefined && categories.map( category => (
-                  <label 
-                    key={category.path}
-                    onClick={this.selectCategory}
-                    className={ "btn btn-secondary" + ( this.state.category === category.name ? " active" : "")}
-                  >
-                    <input type="radio" name="category" value={category.name} /> {category.name}
-                  </label>
+                {categories 
+                  && categories.map(category => (
+                    <label 
+                      key={category.path}
+                      onClick={this.selectCategory}
+                    >
+                      <input 
+                        type="radio" 
+                        name="category" 
+                        value={category.name} 
+                      /> 
+                      {category.name}
+                    </label>
                 ))}
               </div>
             </div>
@@ -115,7 +120,7 @@ class PostForm extends Component {
           <button onClick={this.cancelPostAdd}>
             Cancel
           </button>
-          <button disabled={ ! this.state.category }>
+          <button disabled={!this.state.category}>
             Save Post
           </button>
         </div>

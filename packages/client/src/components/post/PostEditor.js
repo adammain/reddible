@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+
 import { removePost } from '../../actions/post'
 import VoteHandler from '../common/VoteHandler'
 import CommentCount from './components/CommentCount'

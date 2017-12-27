@@ -22,11 +22,11 @@ class CommentControls extends Component {
     const { comment } = this.props
 
     return (
-      <div className="CommentControls btn-toolbar">
+      <div>
         <VoteControl entry={ comment } />
 
-        <div className="CommentsCountCountrol input-group">
-          <span className="input-group-addon"><small>{ fromNow(comment.timestamp)}</small></span>
+        <div>
+          <span><small>{ fromNow(comment.timestamp)}</small></span>
         </div>
 
         <EditDeleteControls 

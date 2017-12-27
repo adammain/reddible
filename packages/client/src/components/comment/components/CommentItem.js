@@ -39,22 +39,18 @@ class CommentItem extends Component {
   }
 
   render () {
-
     const { comment } = this.props    
 
     return this.state.isEditing ? (
       <li 
         key={comment.id}
-        className="CommentItem list-group-item bg-light"
       >
         <form 
-          className="mb-2" 
           ref={(commentUpdateForm) => this.commentUpdateForm = commentUpdateForm}
           onSubmit={ this.handleCommentUpdate }
         >
-          <div className="form-group">
+          <div>
             <input 
-              className="form-control" 
               type="text" 
               name="author" 
               placeholder="Your name" 
@@ -62,9 +58,8 @@ class CommentItem extends Component {
               required 
             />
           </div>
-          <div className="form-group">
+          <div>
             <textarea 
-              className="form-control" 
               name="body"
               rows="3"
               placeholder="Your comment"
@@ -72,11 +67,13 @@ class CommentItem extends Component {
               required
             />
           </div>
-          <div className="text-right">
-            <button className="card-link btn btn-outline-secondary"
-              onClick={this.cancelCommentEdit}
-            >Cancel</button>
-            <button className="card-link btn btn-primary">Save Changes</button>
+          <div>
+            <button onClick={this.cancelCommentEdit}>
+              Cancel
+            </button>
+            <button>
+              Save Changes
+            </button>
           </div>
         </form>
       </li>
@@ -84,10 +81,12 @@ class CommentItem extends Component {
     (
       <li 
         key={comment.id}
-        className="CommentItem list-group-item"
       >
-        <strong>{comment.author}: </strong> {comment.body}
-        <CommentControls comment={comment} editClickHandler={ this.showEditComment } />
+        <strong> {comment.author}: </strong> {comment.body}
+        <CommentControls 
+          comment={comment} 
+          editClickHandler={this.showEditComment} 
+        />
       </li>
     )
   }

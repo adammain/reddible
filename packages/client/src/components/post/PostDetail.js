@@ -55,8 +55,7 @@ class PostDetail extends Component {
                 {post.title}
               </h3>
 
-              <time 
-                {...styles.postMeta}
+              <time {...styles.postMeta}
                 dateTime={dateTimeFormat(post.timestamp)}
               >
                 {fromNow(post.timestamp)}

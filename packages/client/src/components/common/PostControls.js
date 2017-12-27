@@ -6,10 +6,10 @@ import { css } from 'glamor'
 
 class PostControls extends Component {
   render () {
-    const { onDeleteClick, onEditClick } = this.props
+    const { onDeleteClick, onEditClick, style } = this.props
 
     return (
-      <div>
+      <div {...style}>
         <button {...styles.iconBtn} onClick={onEditClick}>
           <FaPencil />
           <span> Edit</span>

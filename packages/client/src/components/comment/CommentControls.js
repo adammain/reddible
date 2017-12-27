@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { removeComment } from '../../actions/comments'
-import VoteControl from '../common/VoteHandler'
 import PostControls from '../common/PostControls'
-import { fromNow } from '../../utils/helpers'
 
 class CommentControls extends Component {
   
@@ -18,22 +16,14 @@ class CommentControls extends Component {
   }
 
   render () {
-
-    const { comment } = this.props
+    const { comment, style } = this.props
 
     return (
-      <div>
-        <VoteControl entry={ comment } />
-
-        <div>
-          <span><small>{fromNow(comment.timestamp)}</small></span>
-        </div>
-
         <PostControls 
           onDeleteClick={() => {this.handleDeleteComment()}}
           onEditClick={() => {this.handleEditComment()}}
+          style={style}
         />
-      </div>
     )
   }
 }

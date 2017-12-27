@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { css } from 'glamor'
 
 import { removePost } from '../../actions/post'
 import VoteHandler from '../common/VoteHandler'
 import CommentCount from './components/CommentCount'
-import PostControls from '../common/EditDeleteControls'
+import PostControls from '../common/PostControls'
 
 class PostEditor extends Component {
 
   handleDeletePost = () => {
-    this.props.removePost(this.props.post).then( () => {
+    this.props.removePost(this.props.post).then(() => {
       if( this.props.categories.selectedCategory )
         this.props.history.push(`/${this.props.categories.selectedCategory}`)
       else
@@ -23,22 +24,27 @@ class PostEditor extends Component {
   }
 
   render () {
-
     const { post } = this.props
 
     return (
-      <div>
-        <div>
-          <VoteHandler entry={post} />
-          <CommentCount parentId={post.id} />
-          <PostControls 
-            onDeleteClick={ () => { this.handleDeletePost() } }
-            onEditClick={ () => { this.handleEditPost() } }
-          />
-        </div>
+      <div {...styles.container}>
+        <CommentCount parentId={post.id} />
+        <PostControls 
+          onDeleteClick={() => {this.handleDeletePost()}}
+          onEditClick={() => {this.handleEditPost()}}
+        />
       </div>
     )
   }
+}
+
+const styles = {
+  container: css({
+    padding: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 5,
+  })
 }
 
 const mapStateToProps  = ({ categories }) => ({

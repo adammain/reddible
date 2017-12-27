@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
+import { css } from 'glamor'
 
 import { fetchPost } from '../../actions/post'
 import { addNewComment } from '../../actions/comments'
 import { fromNow, dateTimeFormat } from '../../utils/helpers'
 import PostEditor from './PostEditor'
 import PostComments from './components/PostComments'
+import VoteHandler from '../common/VoteHandler'
 
 class PostDetail extends Component {
 
@@ -44,47 +46,79 @@ class PostDetail extends Component {
 
     if (post && post.title) {
       return (
-        <article>
+        <section {...styles.container}>
+          <div {...styles.post}>
+            <VoteHandler entry={post} />
+
             <div>
-              <div>
-                <h6>{post.author}</h6>
-                <time dateTime={ dateTimeFormat(post.timestamp)}>
-                  {fromNow(post.timestamp)}
-                </time>
+              <h3 {...styles.postTitle}>
+                {post.title}
+              </h3>
+
+              <time 
+                {...styles.postMeta}
+                dateTime={dateTimeFormat(post.timestamp)}
+              >
+                {fromNow(post.timestamp)}
+                <span> by <b>{post.author}</b></span>
+              </time>
+
+              <div {...styles.postBody}>
+                {post.body}
               </div>
 
-              <h4>{post.title}</h4>
-              <div>{post.body}</div>
-            </div>
-
-            <div>
               <PostEditor post={post} history={history} />
             </div>
+          </div>
 
-            {postComments && (
+          {postComments && (
               <PostComments 
                 comments={postComments}
                 onNewComment={this.handleNewComment}
               />
             )}
-        </article>
+        </section>
       )
     } else {
       return (
-        <article>
-          <div>
-            <div>
-              This post no longer exists.
-            </div>
-          </div>
-        </article>
+        <section>
+          This post no longer exists.
+        </section>
       )
     }
   }
 }
 
+const styles = {
+  container: css({
+    maxWidth: '75%',
+    margin: 15,
+    padding: 20,
+    backgroundColor: 'white',
+    'box-shadow': '0 1px 4px 0 rgba(0,0,0,0.14)'
+  }),
+  post: css({
+    display: 'flex',
+    flexDirection: 'row'
+  }),
+  postTitle: css({
+    margin: 0,
+    padding: 0,
+    color: '#3b6b50'
+  }),
+  postMeta: css({
+    fontStyle: 'italic',
+    color: '#9e9e9e'
+  }),
+  postBody: css({
+    margin: 15
+  })
+}
+
 const mapStateToProps  = ({ post, comments }) => ({
-  post: post.post ? post.post : post,
+  post: post.post 
+    ? post.post 
+    : post,
   comments
 })
 

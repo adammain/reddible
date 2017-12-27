@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import { removeComment } from '../../actions/comments'
 import VoteControl from '../common/VoteHandler'
-import EditDeleteControls from '../common/EditDeleteControls'
+import PostControls from '../common/PostControls'
 import { fromNow } from '../../utils/helpers'
 
 class CommentControls extends Component {
@@ -26,12 +26,12 @@ class CommentControls extends Component {
         <VoteControl entry={ comment } />
 
         <div>
-          <span><small>{ fromNow(comment.timestamp)}</small></span>
+          <span><small>{fromNow(comment.timestamp)}</small></span>
         </div>
 
-        <EditDeleteControls 
-          onDeleteClick={ () => { this.handleDeleteComment() } }
-          onEditClick={ () => { this.handleEditComment() } }
+        <PostControls 
+          onDeleteClick={() => {this.handleDeleteComment()}}
+          onEditClick={() => {this.handleEditComment()}}
         />
       </div>
     )

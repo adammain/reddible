@@ -28,16 +28,6 @@ class Header extends PureComponent {
         <div {...styles.threadSort}>
           <PostThreadSort {...this.props} />
         </div>
-
-
-        <Link 
-          to='/new' 
-          type='button'
-          {...styles.submitBtn}
-        >
-          Submit Text
-        </Link>
-
       </div>
     )
   }
@@ -58,17 +48,6 @@ const styles = {
     position: 'relative',
     top: 330
   }),
-  submitBtn: css({
-    position: 'absolute',
-    top: 415,
-    right: 15,
-    fontFamily: 'monospace',
-    textDecoration: 'none',
-    backgroundColor: '#c13838',
-    color: 'white',
-    padding: 10,
-    fontSize: 'x-large',
-  })
 }
 
 const mapStateToProps = ({ categories, selectedCategory }) => ({

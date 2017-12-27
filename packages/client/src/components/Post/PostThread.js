@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { css } from 'glamor'
 
 import Post from './components/Post'
 import { selectCategory } from '../../actions/categories'
@@ -45,7 +47,11 @@ class PostListView extends Component {
     const sortedPosts = this.sort(posts, sort)
 
     return (
-      <div>
+      <section {...styles.container}>
+        <Link to='/new' {...styles.submitBtn}>
+          Submit Text
+        </Link>
+
         {sortedPosts 
           && sortedPosts.length 
             ? sortedPosts.map( post => (
@@ -54,15 +60,33 @@ class PostListView extends Component {
                 post={post}
               />
             ))
-            : (<div>
-                <div>
-                  No posts in <em>{this.props.match.params.category}</em>
-                </div>
-              </div>)
+            : <span>
+                No posts in category <b>{this.props.match.params.category}</b> 
+              </span>
         }
-      </div>
+      </section>
     )
   }
+}
+
+const styles = {
+  container: css({
+    maxWidth: '75%',
+    margin: 15,
+    padding: 20,
+    backgroundColor: 'white',
+    'box-shadow': '0 1px 4px 0 rgba(0,0,0,0.14)'
+  }),
+  submitBtn: css({
+    position: 'absolute',
+    right: '4%',
+    fontFamily: 'monospace',
+    textDecoration: 'none',
+    backgroundColor: '#c13838',
+    color: 'white',
+    padding: 10,
+    fontSize: 'x-large',
+  }),
 }
 
 const mapStateToProps  = ({ posts, sort }) => ({

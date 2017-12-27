@@ -16,7 +16,7 @@ class Post extends Component {
             <h4>{post.title}</h4>
           </Link>
           <footer>
-						By {post.author}, { fromNow(post.timestamp)}
+						By {post.author}, {fromNow(post.timestamp)}
 					</footer>
         </div>
         <div>

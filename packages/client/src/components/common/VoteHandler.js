@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { postVote } from '../../actions/vote'
 import FaChevronUp from 'react-icons/lib/fa/chevron-up'
 import FaChevronDown from 'react-icons/lib/fa/chevron-down'
+import { css } from 'glamor'
 
 
 class VoteHandler extends Component {
@@ -21,21 +22,40 @@ class VoteHandler extends Component {
     let score = (vote[entry.id] === undefined) ? entry.voteScore : vote[entry.id]
 
     return (
-      <div>
-        <button
-          onClick={() => {this.vote(entry, 'downVote')}}
-        >
-          <FaChevronDown flip="horizontal" />
-        </button>
-        <span>{score}</span>
-        <button
+      <div {...styles.container}>
+        <button 
+          {...styles.iconBtn}
           onClick={() => {this.vote(entry, 'upVote')}}
         >
           <FaChevronUp />
         </button>
+
+        <span>{score}</span>
+
+        <button 
+          {...styles.iconBtn}
+          onClick={() => {this.vote(entry, 'downVote')}}
+        >
+          <FaChevronDown />
+        </button>
       </div>
     )
   }
+}
+
+const styles = {
+  container: css({
+    padding: 20,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    width: 0,
+  }),
+  iconBtn: css({
+    borderColor: 'transparent',
+    cursor: 'pointer'
+  })
 }
 
 const mapStateToProps  = ({ vote }, ownProps) => ({

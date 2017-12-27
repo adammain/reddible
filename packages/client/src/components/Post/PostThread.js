@@ -75,7 +75,7 @@ const styles = {
     margin: 15,
     padding: 20,
     backgroundColor: 'white',
-    'box-shadow': '0 1px 4px 0 rgba(0,0,0,0.14)'
+    boxShadow: '0 1px 4px 0 rgba(0,0,0,0.14)'
   }),
   submitBtn: css({
     position: 'absolute',

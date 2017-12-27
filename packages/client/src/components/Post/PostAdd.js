@@ -9,16 +9,17 @@ import PostForm from './PostForm'
 
 class PostAdd extends Component {
 
-  handlePostSubmit = ( event ) => {
-    event.preventDefault()
-
-    const serializedPost = FormSerialize(event.target, {hash: true})
+  handlePostSubmit = (e) => {
+    e.preventDefault()
+    
+    const serializedPost = FormSerialize(e.target, {hash: true})
     const postId = uuid()
     const post = {
       ...serializedPost,
       id: postId
     }
-    this.props.addNewPost( post ).then( ({ p }) => {
+    console.log("form submit value: ", post)
+    this.props.addNewPost(post).then(({p}) => {
       this.props.history.push(`/${post.category}/${post.id}`)
     })
   }
@@ -27,7 +28,7 @@ class PostAdd extends Component {
     return (
       <section {...styles.container}>
           <PostForm 
-            formHeaderTitle='New Post'
+            formTitle='New Post'
             onFormSubmit={this.handlePostSubmit} 
           />
       </section>
@@ -37,11 +38,8 @@ class PostAdd extends Component {
 
 const styles = {
   container: css({
-    maxWidth: '75%',
     margin: 15,
     padding: 20,
-    backgroundColor: 'white',
-    'box-shadow': '0 1px 4px 0 rgba(0,0,0,0.14)'
   })
 }
 

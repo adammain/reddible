@@ -1,46 +1,39 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { faLongArrowAltDown, faLongArrowAltUp } from '@fortawesome/fontawesome-free-solid'
-// import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { css } from 'glamor'
 
 import * as sortActions from '../../actions/sort'
 
-const SortButtonPropTypes = {
-  orderby: PropTypes.string,
-  criteria: PropTypes.string,
-  sort: PropTypes.oneOf(['asc', 'desc']),
-  onClickHandler: PropTypes.func
-}
-
 class SortButton extends Component {
   render () {
-    const { orderby, sort, criteria, onClickHandler } = this.props
+    const { 
+      orderby, 
+      sort, 
+      option, 
+      onClickHandler 
+    } = this.props
 
     return (
-      <button type="button" 
-        className={ "btn " + (orderby === criteria ? "btn-primary": "btn-secondary")}
-        onClick={ () => { onClickHandler(criteria, sort) } }
+      <button 
+        type="button" 
+        onClick={ () => {onClickHandler(option, sort)}}
+        {...styles.sortButton}
       >
-        {/* {orderby === criteria && (
-          <FontAwesomeIcon iconDefinition={ sort === 'asc' ? faLongArrowAltUp : faLongArrowAltDown} />
-        )} */}
-        {criteria}
+        {option}
       </button>
     )
   }
 }
 
-SortButton.propTypes = SortButtonPropTypes
-
 class PostThreadSort extends Component {
 
   componentDidMount() { 
-    this.props.setSort('date', 'asc')
+    this.props.setSort('NEW', 'asc')
   }
 
-  handleSortClick = (criteria, sort) => {
-    this.props.setSort(criteria, sort === 'asc' ? 'desc' : 'asc')
+  handleSort = (option, sort) => {
+    this.props.setSort(option, sort === 'asc' ? 'desc' : 'asc')
   }
 
   render () {
@@ -49,25 +42,45 @@ class PostThreadSort extends Component {
     return (
       <div>
         { sort.orderby && (
-          <div>
+          <div {...styles.container} >
             <SortButton 
-              onClickHandler={this.handleSortClick} 
+              onClickHandler={this.handleSort} 
               orderby={ sort.orderby } 
               sort={sort.sort} 
-              criteria="date" 
+              option="NEW" 
             />
 
             <SortButton 
-              onClickHandler={this.handleSortClick} 
+              onClickHandler={this.handleSort} 
               orderby={ sort.orderby } 
               sort={sort.sort} 
-              criteria="score" 
+              option="TOP" 
             />
           </div>
         )}
       </div>
     )
   }
+}
+
+const styles = {
+  container: css({
+    padding: 10,
+    backgroundColor: '#00000070'
+  }),
+  sortButton: css({
+    borderColor: 'transparent',
+    borderStyle: 'none',
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    fontSize: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+    color: 'white',
+    fontFamily: 'monospace',
+    cursor: 'pointer',
+    fontWeight: 'bold'
+  })
 }
 
 const mapStateToProps  = ({ sort }) => ({

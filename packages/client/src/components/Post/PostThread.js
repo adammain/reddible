@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import PostThreadSort from './PostThreadSort'
 import Post from './components/Post'
 import { selectCategory } from '../../actions/categories'
 import { fetchPosts } from '../../actions/posts'
@@ -24,11 +23,11 @@ class PostListView extends Component {
     if (items) {
       let itemList = items.map(item => item)
       switch (sortSetting.orderby) {
-        case 'date':
+        case 'NEW':
           return sortSetting.sort === 'asc' 
             ? itemList.sort((a, b) => a.timestamp > b.timestamp) 
             : itemList.sort((a, b) => a.timestamp < b.timestamp)
-        case 'score':
+        case 'TOP':
           return sortSetting.sort === 'asc' 
             ? itemList.sort((a, b) => a.voteScore > b.voteScore) 
             : itemList.sort((a, b) => a.voteScore < b.voteScore)
@@ -47,7 +46,6 @@ class PostListView extends Component {
 
     return (
       <div className="container">
-        <PostThreadSort />
         {sortedPosts 
           && sortedPosts.length 
             ? sortedPosts.map( post => (

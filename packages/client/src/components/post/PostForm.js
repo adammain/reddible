@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { css } from 'glamor'
 
-class PostForm extends Component {
+class PostForm extends PureComponent {
 
   state = {
     author: "",

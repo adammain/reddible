@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import FaPencil from 'react-icons/lib/fa/pencil'
 import FaTrash from 'react-icons/lib/fa/trash'
 import { css } from 'glamor'
 
 
-class PostControls extends Component {
+class PostControls extends PureComponent {
   render () {
     const { onDeleteClick, onEditClick, style } = this.props
 

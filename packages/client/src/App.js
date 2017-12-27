@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { css } from 'glamor'
 
@@ -17,7 +17,7 @@ css.global('html, body', {
 })
 
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <div>

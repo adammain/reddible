@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
@@ -7,7 +7,7 @@ import { css } from 'glamor'
 import { requestAddPost } from '../../actions/post'
 import PostForm from './PostForm'
 
-class PostAdd extends Component {
+class PostAdd extends PureComponent {
 
   handlePostSubmit = (e) => {
     e.preventDefault()

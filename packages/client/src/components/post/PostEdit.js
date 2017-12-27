@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import { css } from 'glamor'
@@ -8,7 +8,7 @@ import { selectCategory } from '../../actions/categories'
 import PostForm from './PostForm'
 
 
-class PostEdit extends Component {
+class PostEdit extends PureComponent {
 
   componentDidMount() {
     const id = this.props.match.params.id || false

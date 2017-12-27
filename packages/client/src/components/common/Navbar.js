@@ -4,8 +4,8 @@ import { css } from 'glamor'
 
 class Navbar extends PureComponent {
   render () {
-    const { categories, routeCategory, style } = this.props
-    console.log("props", this.props)
+    const { categories, style } = this.props
+
     return (
       <nav {...styles.container} {...style.navbar}>
         <Link 

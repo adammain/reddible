@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { css } from 'glamor'
 
 import Navbar from '../common/Navbar'
@@ -16,13 +15,13 @@ class Header extends PureComponent {
 
   render () {
     const { categories } = this.props.categories
-    const currentCategory = this.props.match.params.category
+    // const currentCategory = this.props.match.params.category
+
     return (
       <div {...styles.container}>
         <Navbar 
           style={styles.navbar} 
           categories={categories} 
-          routeCategory={currentCategory} 
         />
 
         <div {...styles.threadSort}>

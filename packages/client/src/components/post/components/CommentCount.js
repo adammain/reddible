@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
 import * as commentActions from '../../../actions/comments'
 import FaComments from 'react-icons/lib/fa/comments'
 
 
-class CommentsCountCountrol extends Component {
+class CommentsCountCountrol extends PureComponent {
 
   componentDidMount () {
     const parentId = this.props.parentId

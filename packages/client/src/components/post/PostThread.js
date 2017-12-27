@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { css } from 'glamor'
@@ -7,7 +7,7 @@ import Post from './components/Post'
 import { selectCategory } from '../../actions/categories'
 import { requestGetPosts } from '../../actions/posts'
 
-class PostListView extends Component {
+class PostListView extends PureComponent {
 
   componentDidMount() {
     const filter = this.props.match.params.category || false

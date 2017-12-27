@@ -1,32 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { css } from 'glamor'
 
 import * as sortActions from '../../actions/sort'
+import SortButton from './components/SortButton'
 
-class SortButton extends Component {
-  render () {
-    const { 
-      orderby, 
-      sort, 
-      option, 
-      onClickHandler 
-    } = this.props
-
-    return (
-      <button 
-        type="button" 
-        onClick={ () => {onClickHandler(option, sort)}}
-        {...styles.sortButton}
-      >
-        {option}
-      </button>
-    )
-  }
-}
-
-class PostThreadSort extends Component {
+class PostThreadSort extends PureComponent {
 
   componentDidMount() { 
     this.props.setSortOption('NEW', 'asc')
@@ -45,14 +24,12 @@ class PostThreadSort extends Component {
           <div {...styles.container} >
             <SortButton 
               onClickHandler={this.handleSort} 
-              orderby={ sort.orderby } 
               sort={sort.sort} 
               option="NEW" 
             />
 
             <SortButton 
               onClickHandler={this.handleSort} 
-              orderby={ sort.orderby } 
               sort={sort.sort} 
               option="TOP" 
             />
@@ -67,19 +44,6 @@ const styles = {
   container: css({
     padding: 10,
     backgroundColor: '#00000070'
-  }),
-  sortButton: css({
-    borderColor: 'transparent',
-    borderStyle: 'none',
-    borderWidth: 0,
-    backgroundColor: 'transparent',
-    fontSize: 15,
-    paddingLeft: 20,
-    paddingRight: 20,
-    color: 'white',
-    fontFamily: 'monospace',
-    cursor: 'pointer',
-    fontWeight: 'bold'
   })
 }
 

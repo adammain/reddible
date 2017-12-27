@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { requestPostVote } from '../../actions/vote'
 import FaChevronUp from 'react-icons/lib/fa/chevron-up'
@@ -6,7 +6,7 @@ import FaChevronDown from 'react-icons/lib/fa/chevron-down'
 import { css } from 'glamor'
 
 
-class VoteHandler extends Component {
+class VoteHandler extends PureComponent {
   
   vote = (entry, option) => {
     const type 

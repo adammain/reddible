@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import { css } from 'glamor'
 
 import { requestUpdateComment } from '../../actions/comments'
-import CommentControls from './CommentControls'
+import CommentEditor from './CommentEditor'
 import VoteControl from '../common/VoteHandler'
 import { fromNow } from '../../utils/helpers'
 
-class CommentItem extends Component {
+class CommentItem extends PureComponent {
 
   state = {
     isEditing: false
@@ -95,8 +95,8 @@ class CommentItem extends Component {
               <span>{fromNow(comment.timestamp)}</span>
               <span> by <strong>{comment.author}</strong></span>
               
-              <CommentControls 
-                comment={comment} 
+              <CommentEditor 
+                comment={comment}
                 editClickHandler={this.showEditComment} 
                 style={styles.displayInline}
               />

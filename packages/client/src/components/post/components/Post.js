@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { css } from 'glamor'
 
@@ -6,7 +6,7 @@ import PostEditor from '../PostEditor'
 import { fromNow } from '../../../utils/helpers'
 import VoteHandler from '../../common/VoteHandler'
 
-class Post extends Component {
+class Post extends PureComponent {
   render () {
     const { post } = this.props
     

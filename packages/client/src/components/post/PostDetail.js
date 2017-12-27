@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
@@ -11,7 +11,7 @@ import PostEditor from './PostEditor'
 import PostComments from './components/PostComments'
 import VoteHandler from '../common/VoteHandler'
 
-class PostDetail extends Component {
+class PostDetail extends PureComponent {
 
   componentDidMount() {
     const id = this.props.match.params.id || false

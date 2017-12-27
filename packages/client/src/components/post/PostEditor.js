@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { css } from 'glamor'
 
 import { requestDeletePost } from '../../actions/post'
-import VoteHandler from '../common/VoteHandler'
 import CommentCount from './components/CommentCount'
 import PostControls from '../common/PostControls'
 
-class PostEditor extends Component {
+class PostEditor extends PureComponent {
 
   handleDeletePost = () => {
     this.props.requestDeletePost(this.props.post).then(() => {
@@ -46,7 +45,6 @@ const styles = {
     padding: 20,
     display: 'flex',
     flexDirection: 'row',
-    padding: 5,
   }),
   commentCount: css({
     color: '#000000',

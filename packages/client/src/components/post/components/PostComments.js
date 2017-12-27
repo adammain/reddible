@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { css } from 'glamor'
 
 import CommentItem from '../../comment/CommentItem'
 
-class PostComments extends Component {
+class PostComments extends PureComponent {
 
   sortCommentsByDate = ( comments ) => {
     if( comments !== undefined ) {

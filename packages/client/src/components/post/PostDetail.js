@@ -4,7 +4,7 @@ import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
 import { css } from 'glamor'
 
-import { fetchPost } from '../../actions/post'
+import { requestGetPost } from '../../actions/post'
 import { addNewComment } from '../../actions/comments'
 import { fromNow, dateTimeFormat } from '../../utils/helpers'
 import PostEditor from './PostEditor'
@@ -15,13 +15,13 @@ class PostDetail extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id || false
-    this.props.fetchPost(id)
+    this.props.requestGetPost(id)
   }
 
   componentWillReceiveProps(nextProps) {
     if( nextProps.match.params.id !== this.props.match.params.id ) {
       const id = this.props.match.params.id || false
-      this.props.fetchPost(id)
+      this.props.requestGetPost(id)
     }
   }
 
@@ -122,4 +122,4 @@ const mapStateToProps  = ({ post, comments }) => ({
   comments
 })
 
-export default connect(mapStateToProps, { fetchPost, addNewComment })(PostDetail)
+export default connect(mapStateToProps, { requestGetPost, addNewComment })(PostDetail)

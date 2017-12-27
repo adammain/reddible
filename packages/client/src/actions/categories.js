@@ -5,19 +5,19 @@ import {
   SELECT_CATEGORY 
 } from './constTypes'
 
-// Async fetch handler -> call Load when result returned
-export const fetchCategories = () => dispatch => (
-  api.fetchCategories()
-      .then(categories => dispatch(getCategories(categories)))
+// GET CATEGORES: ALL - ASYNC HANDLER
+export const requestGetCategories = () => dispatch => (
+  api.requestGetCategories()
+     .then(categories => dispatch(getCategories(categories)))
 )
 
-// GET all categories
+// GET CATEGORIES: ALL
 export const getCategories = categories => ({
     type: GET_CATEGORIES,
     categories
-});
+})
 
-// Select category
+// GET CATEGORY: MATCH
 export const selectCategory = (selectedCategory) => {
     return {
         type: SELECT_CATEGORY,

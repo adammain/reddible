@@ -6,44 +6,41 @@ import {
   DELETE_POST
 } from './constTypes'
 
-// GET post
+// GET POST: MATCH
+export const requestGetPost = id => dispatch => (
+  api.requestGetPost(id)
+     .then(post => dispatch(getPost(post)))
+)
+
 export const getPost = post => ({
   type: GET_POST,
   post
 })
 
-export const fetchPost = (id) => dispatch => (
-  api
-      .fetchPost(id)
-      .then(post => dispatch(getPost(post)))
-)
-
 export const updatePost = post => dispatch => (
-  api
-      .updatePost(post)
-      .then(data => dispatch(getPost(data)))
+  api.updatePost(post)
+     .then(data => dispatch(getPost(data)))
 )
 
-// GET NEWEST POST
+// GET POST: MATCH MOST RECENT
 export const getNewPost = post => ({
   type: GET_NEW_POST,
   post
 })
 
-export const addNewPost = ( post ) => dispatch => (
-  console.log("action post asset: ", post),
-  api.addPost( post )
+// ADD POST
+export const requestAddPost = post => dispatch => (
+  api.requestAddPost( post )
      .then(post => dispatch(getNewPost(post)))
 )
 
 // DELETE POST
+export const requestDeletePost = post => dispatch => (
+  api.requestDeletePost(post.id)
+     .then(dispatch(deletePost(post)))
+)
+
 export const deletePost = post => ({
   type: DELETE_POST,
   post
 })
-
-export const removePost = (post) => dispatch => (
-  api
-      .removePost(post.id)
-      .then(dispatch(deletePost(post)))
-)

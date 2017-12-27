@@ -9,10 +9,10 @@ class CommentsCountCountrol extends Component {
 
   componentDidMount () {
     const parentId = this.props.parentId
-    this.props.fetchPostComments(parentId)
+    this.props.requestPostComments(parentId)
   }
 
-  commentCount = (comments) => {
+  commentCount = comments => {
     return comments 
       ? comments.length 
       : 0

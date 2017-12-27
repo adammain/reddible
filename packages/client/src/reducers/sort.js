@@ -1,6 +1,6 @@
 import { 
   SET_SORT
-} from '../actions/constTypes';
+} from '../actions/constTypes'
 
 const sort = (state = {}, action) => {
   const { orderby, sort } = action
@@ -10,11 +10,11 @@ const sort = (state = {}, action) => {
         ...state,
         orderby,
         sort
-      };
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default sort;
+export default sort

@@ -1,15 +1,15 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
 
 class Input extends PureComponent {
   handleChange = ({ target }) =>
     this.props.onChange({
       name: target.name,
       value: target.value,
-    });
+    })
 
   render() {
-    const { label, ...props } = this.props;
+    const { label, ...props } = this.props
 
     return (
       <div {...styles.container}>
@@ -23,7 +23,7 @@ class Input extends PureComponent {
           onChange={this.handleChange}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -41,6 +41,6 @@ const styles = {
     fontFamily: 'Open Sans',
     marginBottom: 5,
   }),
-};
+}
 
-export default Input;
+export default Input

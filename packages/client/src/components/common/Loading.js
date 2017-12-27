@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
 
 class Loading extends PureComponent {
   render() {
@@ -12,7 +12,7 @@ class Loading extends PureComponent {
           alt="Loading"
         />
       </div>
-    );
+    )
   }
 }
 
@@ -24,6 +24,6 @@ const styles = {
     width: '100%',
     height: '100vh',
   }),
-};
+}
 
-export default Loading;
+export default Loading

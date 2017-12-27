@@ -4,7 +4,7 @@ import FormSerialize from 'form-serialize'
 import uuid from 'uuid'
 import { css } from 'glamor'
 
-import { addNewPost } from '../../actions/post'
+import { requestAddPost } from '../../actions/post'
 import PostForm from './PostForm'
 
 class PostAdd extends Component {
@@ -18,9 +18,9 @@ class PostAdd extends Component {
       ...serializedPost,
       id: postId
     }
-    console.log("form submit value: ", post)
-    this.props.addNewPost(post).then(({p}) => {
-      this.props.history.push(`/${post.category}/${post.id}`)
+    
+    this.props.requestAddPost(post).then(({p}) => {
+      this.props.history.push(`/${post.category}`)
     })
   }
 
@@ -43,4 +43,4 @@ const styles = {
   })
 }
 
-export default connect(null, { addNewPost })(PostAdd)
+export default connect(null, { requestAddPost })(PostAdd)

@@ -4,7 +4,7 @@ import { css } from 'glamor'
 
 import PostEditor from '../PostEditor'
 import { fromNow } from '../../../utils/helpers'
-import VoteHandler from '../../common/VoteHandler';
+import VoteHandler from '../../common/VoteHandler'
 
 class Post extends Component {
   render () {

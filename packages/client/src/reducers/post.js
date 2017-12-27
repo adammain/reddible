@@ -1,7 +1,7 @@
 import { 
   GET_POST,
   DELETE_POST
-} from '../actions/constTypes';
+} from '../actions/constTypes'
 
 const post = (state = {}, action) => {
   const { post } = action
@@ -10,17 +10,17 @@ const post = (state = {}, action) => {
       return {
         ...state,
         post
-      };
+      }
 
     case DELETE_POST:
       return {
         ...state,
         post: undefined
-      };
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default post;
+export default post

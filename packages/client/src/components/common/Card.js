@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
 
 class Card extends PureComponent {
   render() {
@@ -7,7 +7,7 @@ class Card extends PureComponent {
       fullScreen,
       children,
       ...props,
-    } = this.props;
+    } = this.props
 
     if (fullScreen) {
       return (
@@ -18,7 +18,7 @@ class Card extends PureComponent {
         >
           {children}
         </div>
-      );
+      )
     }
 
     return (
@@ -28,7 +28,7 @@ class Card extends PureComponent {
       >
         {children}
       </div>
-    );
+    )
   }
 }
 
@@ -46,6 +46,6 @@ const styles = {
     width: 'initial',
     margin: 15,
   }),
-};
+}
 
-export default Card;
+export default Card

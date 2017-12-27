@@ -29,11 +29,11 @@ class SortButton extends Component {
 class PostThreadSort extends Component {
 
   componentDidMount() { 
-    this.props.setSort('NEW', 'asc')
+    this.props.setSortOption('NEW', 'asc')
   }
 
   handleSort = (option, sort) => {
-    this.props.setSort(option, sort === 'asc' ? 'desc' : 'asc')
+    this.props.setSortOption(option, sort === 'asc' ? 'desc' : 'asc')
   }
 
   render () {

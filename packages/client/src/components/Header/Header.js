@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import { css } from 'glamor'
 
 import Navbar from '../common/Navbar'
-import { fetchCategories, selectCategory } from '../../actions/categories'
+import { requestGetCategories, selectCategory } from '../../actions/categories'
 import PostThreadSort from '../post/PostThreadSort'
 import HeaderBackground from '../../images/header.png'
 
 class Header extends PureComponent {
 
   componentDidMount() {
-    this.props.fetchCategories()
+    this.props.requestGetCategories()
   }
 
   render () {
@@ -55,4 +55,4 @@ const mapStateToProps = ({ categories, selectedCategory }) => ({
   selectedCategory
 })
 
-export default connect(mapStateToProps, { fetchCategories, selectCategory })(Header)
+export default connect(mapStateToProps, { requestGetCategories, selectCategory })(Header)

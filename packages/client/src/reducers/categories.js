@@ -1,7 +1,7 @@
 import { 
     GET_CATEGORIES, 
     SELECT_CATEGORY 
-  } from '../actions/constTypes';
+  } from '../actions/constTypes'
   
   const categories = (state = {}, action) => {
     const { categories, selectedCategory } = action
@@ -11,7 +11,7 @@ import {
         return {
           ...state,
           categories
-        };
+        }
   
       case SELECT_CATEGORY:
         return {
@@ -20,8 +20,8 @@ import {
         }
       
       default:
-        return state;
+        return state
     }
   }
   
-  export default categories;
+  export default categories

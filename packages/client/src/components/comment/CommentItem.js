@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import FormSerialize from 'form-serialize'
 import { css } from 'glamor'
 
-import { updateComment } from '../../actions/comments'
+import { requestUpdateComment } from '../../actions/comments'
 import CommentControls from './CommentControls'
 import VoteControl from '../common/VoteHandler'
 import { fromNow } from '../../utils/helpers'
@@ -14,7 +14,7 @@ class CommentItem extends Component {
     isEditing: false
   }
 
-  cancelCommentEdit = ( event ) => {
+  cancelEdit = ( event ) => {
     event.preventDefault()
     this.setState({
       isEditing: false
@@ -27,14 +27,14 @@ class CommentItem extends Component {
     })
   }
 
-  handleCommentUpdate = ( event ) => {
+  handleUpdate = ( event ) => {
     event.preventDefault()
     const serializedComment = FormSerialize(event.target, {hash: true})
     const updatedComment = {
       ...this.props.comment,
       ...serializedComment
     }
-    this.props.updateComment(updatedComment).then( data => {
+    this.props.requestUpdateComment(updatedComment).then( data => {
       this.setState({
         isEditing: false
       })
@@ -50,10 +50,11 @@ class CommentItem extends Component {
           <form 
             ref={(commentUpdateForm) => 
               this.commentUpdateForm = commentUpdateForm}
-            onSubmit={this.handleCommentUpdate}
+            onSubmit={this.handleUpdate}
           >
             <div>
               <input 
+                {...styles.nameInput}
                 type="text" 
                 name="author" 
                 placeholder="Your name" 
@@ -63,6 +64,7 @@ class CommentItem extends Component {
             </div>
             <div>
               <textarea 
+                {...styles.commentInput}
                 name="body"
                 rows="3"
                 placeholder="Your comment"
@@ -71,11 +73,11 @@ class CommentItem extends Component {
               />
             </div>
             <div>
-              <button onClick={this.cancelCommentEdit}>
+              <button {...styles.cancelBtn} onClick={this.cancelEdit}>
                 Cancel
               </button>
-              <button>
-                Save Changes
+              <button {...styles.submitBtn}>
+                Submit Changes
               </button>
             </div>
           </form>
@@ -124,11 +126,41 @@ const styles = {
   }),
   displayInline: css({
     display: 'inline'
-  })
+  }),
+  nameInput: css({
+    padding: 7,
+    margin: 7,
+    width: 250,
+  }),
+  commentInput: css({
+    padding: 7,
+    margin: 7,
+    width: 250,
+    height: 50
+  }),
+  cancelBtn: css({
+    position: 'relative',
+    fontFamily: 'monospace',
+    textDecoration: 'none',
+    backgroundColor: '#777777',
+    color: 'white',
+    padding: 5,
+    fontSize: 13,
+  }),
+  submitBtn: css({
+    position: 'relative',
+    margin: 5,
+    fontFamily: 'monospace',
+    textDecoration: 'none',
+    backgroundColor: '#c13838',
+    color: 'white',
+    padding: 5,
+    fontSize: 13,
+  }),
 }
 
 const mapStateToProps  = ({ editMode }) => ({
   editMode
 })
 
-export default connect(mapStateToProps, { updateComment })(CommentItem)
+export default connect(mapStateToProps, { requestUpdateComment })(CommentItem)

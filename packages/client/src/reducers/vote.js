@@ -1,19 +1,19 @@
 import { 
   VOTE 
-} from '../actions/constTypes';
+} from '../actions/constTypes'
 
 const vote = (state = {}, action) => {
-  const { id, score } = action;
+  const { id, score } = action
   switch (action.type) {
     case VOTE:
       return {
         ...state,
         [id]: score
-      };
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default vote;
+export default vote

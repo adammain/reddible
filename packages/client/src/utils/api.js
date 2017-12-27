@@ -11,28 +11,36 @@ const headers = {
   'Authorization': token
 }
 
-// API INTERFACE: POST: CATEGORIES
-export const fetchCategories = () =>
+/*
+* COMMENTS API INTERFACE
+*/
+export const requestGetCategories = () =>
   fetch(`${baseUrl}/categories`, { headers })
     .then(res => res.json())
     .then(data => data.categories)
 
 
-// API INTERFACE: POSTS
-export const fetchPosts = (filter) => {
+/*
+* POST(S) API INTERFACE
+*/
+export const requestGetPosts = (filter) => {
   const url = filter ? `${baseUrl}/${filter}/posts` : `${baseUrl}/posts`
   return fetch(url, { headers })
     .then(res => res.json())
     .then(data => data)
 }
 
-// API INTERFACE: POST
-export const fetchPost = id => 
+/*
+* POST API INTERFACE
+*/
+// GET 
+export const requestGetPost = id => 
   fetch(`${baseUrl}/posts/${id}`, { headers })
     .then(res => res.json())
     .then(data => data)
 
-export const addPost = post => {
+// ADD
+export const requestAddPost = post => {
   const postData = {
     ...post,
     timestamp: new Date().getTime()
@@ -46,6 +54,7 @@ export const addPost = post => {
     .then(data => data)
 }
 
+// UPDATE
 export const updatePost = post => {
   const postData = {
     ...post,
@@ -60,18 +69,37 @@ export const updatePost = post => {
     .then(data => data)
 }
 
-export const removePost = id => 
+// DELETE
+export const requestDeletePost = id => 
   fetch(`${baseUrl}/posts/${id}`, { 
     method: 'DELETE',
     headers 
   })
 
-// Comments
-export const fetchPostComments = id => 
+/*
+* VOTES API INTERFACE
+*/
+export const requestPostVote = (id, option, type) => {
+  const postData = { id: id, option: option }
+  const url = `${baseUrl}/${type}/${id}`
+  return fetch(url, { 
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers 
+    })
+    .then(res => res.json())
+    .then(data => data)
+}
+
+/*
+* COMMENTS API INTERFACE
+*/
+export const requestPostComments = id => 
   fetch(`${baseUrl}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     .then(data => data)
 
+// ADD
 export const addNewComment = comment => {
   const commentData = {
     ...comment,
@@ -86,13 +114,8 @@ export const addNewComment = comment => {
     .then(data => data)
 }
 
-export const removeComment = id => 
-  fetch(`${baseUrl}/comments/${id}`, { 
-    method: 'DELETE',
-    headers 
-  })
-
-export const updateComment = comment => {
+// UPDATE
+export const requestUpdateComment = comment => {
   const commentData = {
     ...comment,
     timestamp: new Date().getTime()
@@ -106,15 +129,9 @@ export const updateComment = comment => {
     .then(data => data)
 }
 
-
-export const vote = (id, option, type) => {
-  const postData = { id: id, option: option }
-  const url = `${baseUrl}/${type}/${id}`
-  return fetch(url, { 
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers 
-    })
-    .then(res => res.json())
-    .then(data => data)
-}
+// DELETE
+export const requestDeleteComment = id => 
+  fetch(`${baseUrl}/comments/${id}`, { 
+    method: 'DELETE',
+    headers 
+  })

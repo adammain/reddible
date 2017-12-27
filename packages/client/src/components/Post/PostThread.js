@@ -5,19 +5,19 @@ import { css } from 'glamor'
 
 import Post from './components/Post'
 import { selectCategory } from '../../actions/categories'
-import { fetchPosts } from '../../actions/posts'
+import { requestGetPosts } from '../../actions/posts'
 
 class PostListView extends Component {
 
   componentDidMount() {
     const filter = this.props.match.params.category || false
-    this.props.fetchPosts(filter)
+    this.props.requestGetPosts(filter)
   }
 
   componentWillReceiveProps(nextProps) {
     if( nextProps.match.params.category !== this.props.match.params.category ) {
       const filter = nextProps.match.params.category || false
-      this.props.fetchPosts(filter)
+      this.props.requestGetPosts(filter)
     }
   }
 
@@ -94,4 +94,4 @@ const mapStateToProps  = ({ posts, sort }) => ({
   sort
 })
 
-export default connect(mapStateToProps, { fetchPosts, selectCategory })(PostListView)
+export default connect(mapStateToProps, { requestGetPosts, selectCategory })(PostListView)

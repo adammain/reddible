@@ -64,7 +64,7 @@ class PostForm extends Component {
         </div>
         <div>
           <div>
-            <label {...styles.label}  htmlFor="author">Name: </label>
+            <label {...styles.label}>Name: </label>
             <input  
               {...styles.nameInput}
               type="text" 
@@ -75,7 +75,7 @@ class PostForm extends Component {
               required />
           </div>
           <div>
-            <label {...styles.label} htmlFor="title">Title: </label>
+            <label {...styles.label}>Title: </label>
             <input 
               {...styles.titleInput}
               type="text" 

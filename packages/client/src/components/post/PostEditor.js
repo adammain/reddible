@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { css } from 'glamor'
 
-import { removePost } from '../../actions/post'
+import { requestDeletePost } from '../../actions/post'
 import VoteHandler from '../common/VoteHandler'
 import CommentCount from './components/CommentCount'
 import PostControls from '../common/PostControls'
@@ -11,7 +11,7 @@ import PostControls from '../common/PostControls'
 class PostEditor extends Component {
 
   handleDeletePost = () => {
-    this.props.removePost(this.props.post).then(() => {
+    this.props.requestDeletePost(this.props.post).then(() => {
       if( this.props.categories.selectedCategory )
         this.props.history.push(`/${this.props.categories.selectedCategory}`)
       else
@@ -59,4 +59,4 @@ const mapStateToProps  = ({ categories }) => ({
   categories
 })
 
-export default withRouter(connect(mapStateToProps, { removePost })(PostEditor))
+export default withRouter(connect(mapStateToProps, { requestDeletePost })(PostEditor))

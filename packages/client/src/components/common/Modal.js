@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
-import { ModalContainer, ModalDialog } from 'react-modal-dialog';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
+import { ModalContainer, ModalDialog } from 'react-modal-dialog'
 
 class Modal extends PureComponent {
   render() {
-    const { show, ...props } = this.props;
+    const { show, ...props } = this.props
 
     if (!show) {
-      return null;
+      return null
     }
 
     return (
@@ -17,7 +17,7 @@ class Modal extends PureComponent {
           {...props}
         />
       </ModalContainer>
-    );
+    )
   }
 }
 
@@ -27,6 +27,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
   }),
-};
+}
 
-export default Modal;
+export default Modal

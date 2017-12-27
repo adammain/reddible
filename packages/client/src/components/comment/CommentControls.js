@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { removeComment } from '../../actions/comments'
+import { requestDeleteComment } from '../../actions/comments'
 import PostControls from '../common/PostControls'
 
 class CommentControls extends Component {
   
   handleDeleteComment = () => {
-    this.props.removeComment(this.props.comment)   
+    this.props.requestDeleteComment(this.props.comment)   
   }
 
   handleEditComment = () => {
@@ -28,4 +28,4 @@ class CommentControls extends Component {
   }
 }
 
-export default withRouter(connect(null, { removeComment })(CommentControls))
+export default withRouter(connect(null, { requestDeleteComment })(CommentControls))

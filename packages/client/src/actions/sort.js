@@ -1,8 +1,9 @@
 import { 
   SET_SORT
-} from './constTypes';
+} from './constTypes'
 
-export const setSort = (orderby, sort) => {
+// SET SORT OPTION
+export const setSortOption = (orderby, sort) => {
   return {
     type: SET_SORT,
     orderby,

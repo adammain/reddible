@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
-import { css } from 'glamor';
+import React, { PureComponent } from 'react'
+import { css } from 'glamor'
 
-import Icon from './Icon';
+import Icon from './Icon'
 
 class Select extends PureComponent {
   handleChange = ({ target }) =>
     this.props.onChange({
       name: target.name,
       value: target.value,
-    });
+    })
 
   render() {
-    const { label, options, ...props } = this.props;
+    const { label, options, ...props } = this.props
 
     return (
       <div {...styles.container}>
@@ -39,7 +39,7 @@ class Select extends PureComponent {
           {...styles.icon}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -69,6 +69,6 @@ const styles = {
     position: 'absolute',
     right: 10,
   }),
-};
+}
 
-export default Select;
+export default Select

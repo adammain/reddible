@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { postVote } from '../../actions/vote'
+import { requestPostVote } from '../../actions/vote'
 import FaChevronUp from 'react-icons/lib/fa/chevron-up'
 import FaChevronDown from 'react-icons/lib/fa/chevron-down'
 import { css } from 'glamor'
@@ -13,7 +13,7 @@ class VoteHandler extends Component {
       = entry.hasOwnProperty('parentId') 
       ? 'comments' 
       : 'posts'
-    this.props.postVote(entry.id, option, type)
+    this.props.requestPostVote(entry.id, option, type)
   }
 
   render () {
@@ -62,4 +62,4 @@ const mapStateToProps  = ({ vote }, ownProps) => ({
   vote
 })
 
-export default connect(mapStateToProps, { postVote })(VoteHandler)
+export default connect(mapStateToProps, { requestPostVote })(VoteHandler)

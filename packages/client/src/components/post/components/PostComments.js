@@ -39,6 +39,8 @@ class PostComments extends Component {
             />
           ))}
 
+
+          <h2>New Comment</h2>
           <form 
             onSubmit={this.handleCommentSubmit}
             ref={(commentForm) => this.commentForm = commentForm}

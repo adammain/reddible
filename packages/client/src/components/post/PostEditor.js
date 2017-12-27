@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { css } from 'glamor'
 
 import { removePost } from '../../actions/post'
@@ -28,7 +28,10 @@ class PostEditor extends Component {
 
     return (
       <div {...styles.container}>
-        <CommentCount parentId={post.id} />
+        <Link {...styles.commentCount} to={`/${post.category}/${post.id}`}>
+          <CommentCount parentId={post.id} />
+        </Link>
+
         <PostControls 
           onDeleteClick={() => {this.handleDeletePost()}}
           onEditClick={() => {this.handleEditPost()}}
@@ -44,7 +47,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     padding: 5,
+  }),
+  commentCount: css({
+    color: '#000000',
+    textDecoration: 'none'
   })
+
 }
 
 const mapStateToProps  = ({ categories }) => ({

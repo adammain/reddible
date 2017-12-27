@@ -1,7 +1,7 @@
 # reddible
 
 ### Screenshot
-![Screenshot of reddible application](/src/img/reddible-screenshot?raw=true "Reddible")
+![Screenshot of reddible application](/packages/client/src/images/reddible-screenshot.png?raw=true "Reddible")
 
 _This projects uses [Lerna] to package the client and development server into a single package._
 

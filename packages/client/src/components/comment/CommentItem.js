@@ -87,15 +87,12 @@ class CommentItem extends Component {
           <VoteControl entry={ comment } />
 
           <div {...styles.comment}>
-            <div {...styles.commentBody}>
-              {comment.body}
-            </div>
+            {comment.body}
 
-          
             <div {...styles.commentMeta}>
               <span>{fromNow(comment.timestamp)}</span>
               <span> by <strong>{comment.author}</strong></span>
-
+              
               <CommentControls 
                 comment={comment} 
                 editClickHandler={this.showEditComment} 
@@ -118,9 +115,6 @@ const styles = {
   comment: css({
     display: 'flex',
     flexDirection: 'column'
-  }),
-  commentBody: css({
-    display: 'block'
   }),
   commentMeta: css({
     fontStyle: 'italic',

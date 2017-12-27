@@ -61,6 +61,7 @@ class PostDetail extends Component {
               >
                 {fromNow(post.timestamp)}
                 <span> by <b>{post.author}</b></span>
+                <span> in <b>{post.category}</b></span>
               </time>
 
               <div {...styles.postBody}>

@@ -6,6 +6,7 @@ import Header from './components/header/Header'
 import PostThread from './components/post/PostThread'
 import PostAdd from './components/post/PostAdd'
 import PostEdit from './components/post/PostEdit'
+import PostDetail from './components/post/PostDetail'
 
 css.global('html, body', {
   margin: 0,
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/new" component={PostAdd} />
           <Route exact path="/edit/:id" component={PostEdit} />
           <Route exact path="/:category" component={PostThread} />
+          <Route path="/:category/:id" component={PostDetail} />
         </Switch>
       </div>
     )
